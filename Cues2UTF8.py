@@ -45,7 +45,7 @@ def toUTF8():
             filepath = path.get() + '/' + cue_list.get(i)
             # print(filepath)
             trans(filepath)
-        mb.showinfo("Done", "Now All .cue files are UTF-8")
+        mb.showinfo("Done", "Now All .cue files are Fixed")
 
 
 # Trans .cue file to UTF-8
@@ -62,33 +62,51 @@ def trans(filepath):
         codecs.open(filepath, 'w', encoding='UTF-8').write(content)
 
 
+# for logo
+
 # for GUI
 root = tk.Tk()
-root.title("Cues2UTF8")
+root.title("Cues-to-UTF8")
 path = tk.StringVar()
 filelist = []
 cues = tk.StringVar()
 
-lab_path = tk.Label(root, text=" 1. Select Folder Path:")
-lab_path.pack()
+lab_path = tk.Label(root, text="1. Select Path", fg='#2F4F4F')
+lab_path.grid(row=0, column=0, sticky="w")
 enr_path = tk.Entry(root, textvariable=path, bg="white")
-enr_path.pack()
-
+enr_path.grid(row=1, column=0, sticky="ew")
 # bp = tk.BitmapImage(file="open.bmp")
 bt_sel = tk.Button(root, text="Open", command=selectPath)
-bt_sel.pack(fill="x")
+bt_sel.grid(row=1, column=1, sticky="ew")
 
-Separator(root, orient="horizontal").pack(fill="x")
+Separator(
+    root, orient="horizontal").grid(
+        row=3, column=0, columnspan=2, sticky="ew", padx=5, pady=5)
 
-
-lab_sel = tk.Label(root, text="2. Select Files")
-lab_sel.pack()
+lab_sel = tk.Label(root, text="2. Select Files", fg='#2F4F4F')
+lab_sel.grid(row=4, column=0, sticky="w")
 cue_list = tk.Listbox(root, listvariable=cues, selectmode="multiple")
-cue_list.pack()
+cue_list.grid(row=5, column=0, columnspan=2, sticky="ew", padx=5, pady=5)
 
-Separator(root, orient="horizontal").pack(fill="x", pady=5)
-bt_start = tk.Button(root, text="Click to Start", command=toUTF8)
-bt_start.pack(fill="x")
+# Separator(root, orient="horizontal").pack(fill="x", pady=5)
+Separator(
+    root, orient="horizontal").grid(
+        row=6, column=0, columnspan=2, sticky="ew", padx=5, pady=1)
 
+bt_start = tk.Button(
+    root,
+    text="Start",
+    highlightbackground="yellow",
+    fg="Black",
+    highlightthickness=30,
+    command=toUTF8)
+bt_start.grid(row=7, column=0, columnspan=2, sticky="ew")
+
+Separator(
+    root, orient="horizontal").grid(
+        row=8, column=0, columnspan=2, sticky="ew", padx=5, pady=3)
+
+lab_sign = tk.Label(root, text="Created by @Jedi.L")
+lab_sign.grid(row=9, column=0, columnspan=2, sticky="ew")
 
 root.mainloop()
