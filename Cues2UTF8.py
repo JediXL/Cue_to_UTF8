@@ -62,8 +62,6 @@ def trans(filepath):
         codecs.open(filepath, 'w', encoding='UTF-8').write(content)
 
 
-# for logo
-
 # for GUI
 root = tk.Tk()
 root.title("Cues-to-UTF8")
@@ -88,7 +86,7 @@ lab_sel.grid(row=4, column=0, sticky="w")
 cue_list = tk.Listbox(root, listvariable=cues, selectmode="multiple")
 cue_list.grid(row=5, column=0, columnspan=2, sticky="ew", padx=5, pady=5)
 
-# Separator(root, orient="horizontal").pack(fill="x", pady=5)
+
 Separator(
     root, orient="horizontal").grid(
         row=6, column=0, columnspan=2, sticky="ew", padx=5, pady=1)
